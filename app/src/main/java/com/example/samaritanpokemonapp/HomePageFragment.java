@@ -86,21 +86,10 @@ public class HomePageFragment extends Fragment {
                         ResponseBody responseBody1 = response.body();
                         String body = responseBody1.string();
                         Log.d("TAG", "onResponse: " + body);
-                        //TODO: Make a PokemonDetails class and use GSON to make an object out of each pokemon's details
-                        try {
-                            JSONObject jsonObject = new JSONObject(body);
-                            final String test = jsonObject.getString("order");
-                            JSONObject jsonObject1 = new JSONObject(jsonObject.getString("sprites"));
-                            final String test1 = jsonObject1.getString("other");
-                            JSONObject jsonObject2 = new JSONObject(jsonObject1.getString("other"));
-                            final String test2 = jsonObject2.getString("official-artwork");
-                            Log.d("TAG", "onResponse: " + test);
-                            Log.d("TAG", "onResponse: " + test1);
-                            Log.d("TAG", "onResponse: " + test2);
-                            //Log.d("TAG", "onResponse: " + test3);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                        PokemonDetails pokemonDetails = gson.fromJson(body, PokemonDetails.class);
+                        Log.d("TAG", "PokemonDetailsType: " + pokemonDetails.types.get(1).type.getName());
+                        Log.d("TAG", "PokemonDetailsPicture: " + pokemonDetails.sprites.other.officialArtwork.getFront_default());
+                        Log.d("TAG", "PokemonDetailsTypeStats: " + pokemonDetails.stats.get(5).stat.getName());
                     }
                 });
             }
