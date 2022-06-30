@@ -12,7 +12,8 @@
         <ImageView
             android:src="@mipmap/ic_launcher"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="85dp"
+            android:maxHeight="85dp"
             android:background="@color/white"
             android:id="@+id/imageViewPokemonPicture"/>
 
@@ -21,20 +22,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:padding="3dp"
+            android:padding="2dp"
             android:text="Name"
             android:textColor="@color/black"
+            android:layout_marginLeft="10dp"
             android:textSize="14sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewPokemonTypes"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
-            android:padding="3dp"
+            android:padding="2dp"
+            android:layout_marginLeft="10dp"
             android:text="Types"
-            android:textSize="14sp" />
+            android:textSize="12sp" />
 
     </LinearLayout>
 

@@ -29,8 +29,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed6245b9-ce13-4651-b8e5-0fe58a23ad4b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/samaritanpokemonapp/PokemonNameAndURL.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/row_grid_items.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_exifinterface_exifinterface_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_annotations_4_11_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_disklrucache_4_11_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_11_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_11_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" afterDir="false" />
@@ -41,11 +44,14 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/SamaritanPokemonApp.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/SamaritanPokemonApp.app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/samaritanpokemonapp/AllPokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/samaritanpokemonapp/AllPokemon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/samaritanpokemonapp/HomePageFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/samaritanpokemonapp/HomePageFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/samaritanpokemonapp/Pokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/samaritanpokemonapp/Pokemon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/row_grid_items.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/row_grid_items.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,22 +227,22 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="432" y="455" key="FileChooserDialogImpl/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656605037374" />
-    <state width="1231" height="357" key="GridCell.Tab.0.bottom" timestamp="1656619085040">
+    <state width="1964" height="398" key="GridCell.Tab.0.bottom" timestamp="1656630820519">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1231" height="357" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656619085040" />
-    <state width="1231" height="357" key="GridCell.Tab.0.center" timestamp="1656619085039">
+    <state width="1964" height="398" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656630820519" />
+    <state width="1964" height="398" key="GridCell.Tab.0.center" timestamp="1656630820519">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1231" height="357" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656619085039" />
-    <state width="1231" height="357" key="GridCell.Tab.0.left" timestamp="1656619085039">
+    <state width="1964" height="398" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656630820519" />
+    <state width="1964" height="398" key="GridCell.Tab.0.left" timestamp="1656630820519">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1231" height="357" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656619085039" />
-    <state width="1231" height="357" key="GridCell.Tab.0.right" timestamp="1656619085039">
+    <state width="1964" height="398" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656630820519" />
+    <state width="1964" height="398" key="GridCell.Tab.0.right" timestamp="1656630820519">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1231" height="357" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656619085039" />
+    <state width="1964" height="398" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656630820519" />
     <state x="151" y="345" key="SettingsEditor" timestamp="1656449789627">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

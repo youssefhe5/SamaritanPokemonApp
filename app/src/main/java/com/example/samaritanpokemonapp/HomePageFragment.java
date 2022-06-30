@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -225,7 +226,11 @@ public class HomePageFragment extends Fragment {
                     break;
             }
 
-            //TODO: Use Glide to display pictures
+            Glide.with(view)
+                    .load(pokemon.getPicture())
+                    .placeholder(R.drawable.ic_launcher_foreground)
+                    .into(imageViewPokemonPicture);
+            
             textViewPokemonNumberAndName.setText("#" + pokemon.getPokedexNumber() + " " + startWithUppercase(pokemon.getName()));
             if (pokemon.getType().size() > 1){
                 textViewPokemonTypes.setText(startWithUppercase(pokemon.getType().get(0).type.getName()) + " · " + startWithUppercase(pokemon.getType().get(1).type.getName()));
