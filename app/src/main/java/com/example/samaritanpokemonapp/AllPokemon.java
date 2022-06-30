@@ -7,10 +7,10 @@ public class AllPokemon {
     int count;
     String next;
     String previous;
-    List<Pokemon> results;
+    List<PokemonNameAndURL> results;
 
     public AllPokemon() {
-        results = new ArrayList<Pokemon>();
+        results = new ArrayList<PokemonNameAndURL>();
     }
 
     public int getCount() {
@@ -37,11 +37,11 @@ public class AllPokemon {
         this.previous = previous;
     }
 
-    public List<Pokemon> getResults() {
+    public List<PokemonNameAndURL> getResults() {
         return results;
     }
 
-    public void setResults(List<Pokemon> results) {
+    public void setResults(List<PokemonNameAndURL> results) {
         this.results = results;
     }
 }
