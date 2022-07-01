@@ -8,12 +8,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
@@ -23,6 +26,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import okhttp3.Call;
@@ -45,6 +51,12 @@ public class HomePageFragment extends Fragment {
             .url("https://pokeapi.co/api/v2/pokemon?limit=20&offset=0")
             .build();
 
+    AllPokemon allPokemon;
+
+    List<Pokemon> pokemons = new ArrayList<>();
+
+    boolean userScrolled = false;
+
     public HomePageFragment() {
         // Required empty public constructor
     }
@@ -52,7 +64,7 @@ public class HomePageFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        request();
+        request(request);
     }
 
     @Override
@@ -60,17 +72,41 @@ public class HomePageFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home_page, container, false);
-        getActivity().setTitle("Home Page");
 
         gridView = view.findViewById(R.id.gridView);
 
+        adapter = new HomePageGridViewAdapter(getActivity(), R.layout.row_grid_items, pokemons);
+
+        gridView.setAdapter(adapter);
+
+        gridView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+                if (i == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){
+                    userScrolled = true;
+                }
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (userScrolled && firstVisibleItem + visibleItemCount == totalItemCount){
+                    if (allPokemon.next != null){
+                        Request newRequest = new Request.Builder()
+                                .url(allPokemon.next)
+                                .build();
+                        request(newRequest);
+                    }
+                    userScrolled = false;
+                }
+            }
+        });
 
 
 
         return view;
     }
 
-    void request(){
+    void request(Request request){
         Gson gson = new GsonBuilder().create();
         client.newCall(request).enqueue(new Callback() {
             @Override
@@ -82,8 +118,8 @@ public class HomePageFragment extends Fragment {
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 ResponseBody responseBody = response.body();
                 String body = responseBody.string();
-                List<Pokemon> pokemons = new ArrayList<>();
-                AllPokemon allPokemon = gson.fromJson(body, AllPokemon.class);
+                allPokemon = gson.fromJson(body, AllPokemon.class);
+                Log.d("TAG", "onResponse: " + allPokemon.next);
 
                 for (PokemonNameAndURL result : allPokemon.results) {
 
@@ -115,10 +151,9 @@ public class HomePageFragment extends Fragment {
                                         pokemon.setType(pokemonDetails.types);
 
                                         pokemons.add(pokemon);
-                                        adapter = new HomePageGridViewAdapter(getActivity(), R.layout.row_grid_items, pokemons);
-                                        gridView.setAdapter(adapter);
 
-                                        Log.d("TAG", "onResponse: " + pokemon.getName());
+                                        adapter.notifyDataSetChanged();
+                                        //Log.d("TAG", "onResponse: " + pokemon.getName());
 
                                     }
                                 });
@@ -163,6 +198,10 @@ public class HomePageFragment extends Fragment {
             }
 
             Pokemon pokemon = getItem(position);
+
+            Comparator<Pokemon> comparator = (pokemon1, pokemon2) -> Integer.compare(pokemon1.getPokedexNumber(), pokemon2.getPokedexNumber());
+
+            Collections.sort(pokemons, comparator);
 
             TextView textViewPokemonNumberAndName = view.findViewById(R.id.textViewPokemonNumberAndName);
             TextView textViewPokemonTypes = view.findViewById(R.id.textViewPokemonTypes);
@@ -230,13 +269,14 @@ public class HomePageFragment extends Fragment {
                     .load(pokemon.getPicture())
                     .placeholder(R.drawable.ic_launcher_foreground)
                     .into(imageViewPokemonPicture);
-            
+
             textViewPokemonNumberAndName.setText("#" + pokemon.getPokedexNumber() + " " + startWithUppercase(pokemon.getName()));
             if (pokemon.getType().size() > 1){
                 textViewPokemonTypes.setText(startWithUppercase(pokemon.getType().get(0).type.getName()) + " · " + startWithUppercase(pokemon.getType().get(1).type.getName()));
             } else {
                 textViewPokemonTypes.setText(startWithUppercase(pokemon.getType().get(0).type.getName()));
             }
+
 
 
             return view;
