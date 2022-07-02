@@ -9,12 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -79,6 +81,14 @@ public class HomePageFragment extends Fragment {
 
         gridView.setAdapter(adapter);
 
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Log.d("TAG", "onItemClick: " + pokemons.get(position).getName());
+                listener.pokemonSelected(pokemons.get(position));
+            }
+        });
+
         gridView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView absListView, int i) {
@@ -104,6 +114,23 @@ public class HomePageFragment extends Fragment {
 
 
         return view;
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        if (context instanceof HomePageListener){
+            listener = (HomePageListener) context;
+        } else {
+            throw new RuntimeException(context.toString());
+        }
+    }
+
+    HomePageListener listener;
+
+    public interface HomePageListener{
+        void pokemonSelected(Pokemon pokemon);
     }
 
     void request(Request request){
@@ -149,11 +176,16 @@ public class HomePageFragment extends Fragment {
                                         pokemon.setWeight(pokemonDetails.getWeight());
                                         pokemon.setHeight(pokemonDetails.getHeight());
                                         pokemon.setType(pokemonDetails.types);
+                                        pokemon.setHP(pokemonDetails.stats.get(0).getBase_stat());
+                                        pokemon.setAttack(pokemonDetails.stats.get(1).getBase_stat());
+                                        pokemon.setDefence(pokemonDetails.stats.get(2).getBase_stat());
+                                        pokemon.setSpecialAttack(pokemonDetails.stats.get(3).getBase_stat());
+                                        pokemon.setSpecialDefense(pokemonDetails.stats.get(4).getBase_stat());
+                                        pokemon.setSpeed(pokemonDetails.stats.get(5).getBase_stat());
 
                                         pokemons.add(pokemon);
 
                                         adapter.notifyDataSetChanged();
-                                        //Log.d("TAG", "onResponse: " + pokemon.getName());
 
                                     }
                                 });
@@ -207,69 +239,89 @@ public class HomePageFragment extends Fragment {
             TextView textViewPokemonTypes = view.findViewById(R.id.textViewPokemonTypes);
             ImageView imageViewPokemonPicture = view.findViewById(R.id.imageViewPokemonPicture);
 
+            //Chooses correct colors
             switch (pokemon.getType().get(0).type.getName()){
                 case "rock":
-                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor("#BBAA66"));
+                    pokemon.setBackgroundColor("#BBAA66");
+                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
                 case "ghost":
-                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor("#6666BA"));
+                    pokemon.setBackgroundColor("#6666BA");
+                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
                 case "steel":
-                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor("#AAAABB"));
+                    pokemon.setBackgroundColor("#AAAABB");
+                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
                 case "water":
-                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor("#3399FE"));
+                    pokemon.setBackgroundColor("#3399FE");
+                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
                 case "grass":
-                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor("#76CC55"));
+                    pokemon.setBackgroundColor("#76CC55");
+                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
                 case "psychic":
-                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor("#FF5599"));
+                    pokemon.setBackgroundColor("#FF5599");
+                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
                 case "ice":
-                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor("#65CCFF"));
+                    pokemon.setBackgroundColor("#65CCFF");
+                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
                 case "dark":
-                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor("#775444"));
+                    pokemon.setBackgroundColor("#775444");
+                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
                 case "fairy":
-                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor("#EE99EE"));
+                    pokemon.setBackgroundColor("#EE99EE");
+                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
                 case "normal":
-                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor("#AAAA9B"));
+                    pokemon.setBackgroundColor("#AAAA9B");
+                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
-
                 case "fighting":
-                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor("#BA5544"));
+                    pokemon.setBackgroundColor("#BA5544");
+                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
                 case "flying":
-                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor("#8799FF"));
+                    pokemon.setBackgroundColor("#8799FF");
+                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
                 case "poison":
-                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor("#AA5599"));
+                    pokemon.setBackgroundColor("#AA5599");
+                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
                 case "ground":
-                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor("#DDBB54"));
+                    pokemon.setBackgroundColor("#DDBB54");
+                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
                 case "bug":
-                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor("#A9BB22"));
+                    pokemon.setBackgroundColor("#A9BB22");
+                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
                 case "fire":
-                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor("#EB5435"));
+                    pokemon.setBackgroundColor("#EB5435");
+                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
                 case "electric":
-                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor("#FFCC33"));
+                    pokemon.setBackgroundColor("#FFCC33");
+                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
                 case "dragon":
-                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor("#6666BA"));
+                    pokemon.setBackgroundColor("#6666BA");
+                    imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
             }
 
+            //Display images from url, uses default android image if desired image cannot be displayed
             Glide.with(view)
                     .load(pokemon.getPicture())
                     .placeholder(R.drawable.ic_launcher_foreground)
                     .into(imageViewPokemonPicture);
 
+            //Display text
             textViewPokemonNumberAndName.setText("#" + pokemon.getPokedexNumber() + " " + startWithUppercase(pokemon.getName()));
             if (pokemon.getType().size() > 1){
                 textViewPokemonTypes.setText(startWithUppercase(pokemon.getType().get(0).type.getName()) + " · " + startWithUppercase(pokemon.getType().get(1).type.getName()));
@@ -283,7 +335,8 @@ public class HomePageFragment extends Fragment {
         }
     }
 
-    StringBuilder startWithUppercase(String word){
+    //Make words start with an uppercase letter
+    public static StringBuilder startWithUppercase(String word){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(word.substring(0,1).toUpperCase());
         stringBuilder.append(word.substring(1));

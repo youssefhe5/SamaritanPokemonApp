@@ -46,6 +46,10 @@ public class PokemonDetails {
     public double getHeight() {
         return height/10.0;
     }
+
+    public List<Stats> getStats() {
+        return stats;
+    }
 }
 
 class TypeOfPokemon{

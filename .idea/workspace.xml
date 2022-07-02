@@ -29,6 +29,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ed6245b9-ce13-4651-b8e5-0fe58a23ad4b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_annotations_4_12_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_disklrucache_4_12_0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/fileHashes/fileHashes.bin" afterDir="false" />
@@ -39,10 +41,24 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.5/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_exifinterface_exifinterface_1_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_exifinterface_exifinterface_1_2_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_annotations_4_11_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_disklrucache_4_11_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_11_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_gifdecoder_4_12_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_11_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_bumptech_glide_glide_4_12_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/SamaritanPokemonApp.app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/SamaritanPokemonApp.app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/samaritanpokemonapp/HomePageFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/samaritanpokemonapp/HomePageFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_home_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/samaritanpokemonapp/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/samaritanpokemonapp/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/samaritanpokemonapp/Pokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/samaritanpokemonapp/Pokemon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/samaritanpokemonapp/PokemonDetailPageFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/samaritanpokemonapp/PokemonDetailsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/samaritanpokemonapp/PokemonDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/samaritanpokemonapp/PokemonDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_pokemon_detail_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_pokemon_details.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,8 +89,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="layoutResourceFile" />
         <option value="Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -198,10 +214,10 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="167" y="446" key="#PSD/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656448289430" />
-    <state x="455" y="416" key="#com.intellij.ide.util.MemberChooser" timestamp="1656612287141">
+    <state x="455" y="416" key="#com.intellij.ide.util.MemberChooser" timestamp="1656716359669">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="455" y="416" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656612287141" />
+    <state x="455" y="416" key="#com.intellij.ide.util.MemberChooser/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656716359669" />
     <state x="5" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1656608023706">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -210,34 +226,34 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="100" y="100" width="1824" height="1212" key="AVDManager/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656699754584" />
-    <state x="860" y="455" key="AndroidCreateResourceFileDialog" timestamp="1656456413580">
+    <state x="860" y="455" key="AndroidCreateResourceFileDialog" timestamp="1656710302314">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="860" y="455" key="AndroidCreateResourceFileDialog/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656456413580" />
+    <state x="860" y="455" key="AndroidCreateResourceFileDialog/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656710302314" />
     <state x="450" y="446" key="AndroidProcessChooserDialog" timestamp="1656620393167">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="450" y="446" key="AndroidProcessChooserDialog/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656620393167" />
-    <state x="432" y="455" key="FileChooserDialogImpl" timestamp="1656605037374">
+    <state x="432" y="455" key="FileChooserDialogImpl" timestamp="1656704322497">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="432" y="455" key="FileChooserDialogImpl/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656605037374" />
-    <state width="1964" height="360" key="GridCell.Tab.0.bottom" timestamp="1656701597522">
+    <state x="432" y="455" key="FileChooserDialogImpl/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656704322497" />
+    <state width="1925" height="358" key="GridCell.Tab.0.bottom" timestamp="1656719979242">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1964" height="360" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656701597522" />
-    <state width="1964" height="360" key="GridCell.Tab.0.center" timestamp="1656701597522">
+    <state width="1925" height="358" key="GridCell.Tab.0.bottom/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656719979242" />
+    <state width="1925" height="358" key="GridCell.Tab.0.center" timestamp="1656719979242">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1964" height="360" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656701597522" />
-    <state width="1964" height="360" key="GridCell.Tab.0.left" timestamp="1656701597521">
+    <state width="1925" height="358" key="GridCell.Tab.0.center/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656719979242" />
+    <state width="1925" height="358" key="GridCell.Tab.0.left" timestamp="1656719979241">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1964" height="360" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656701597521" />
-    <state width="1964" height="360" key="GridCell.Tab.0.right" timestamp="1656701597522">
+    <state width="1925" height="358" key="GridCell.Tab.0.left/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656719979241" />
+    <state width="1925" height="358" key="GridCell.Tab.0.right" timestamp="1656719979242">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1964" height="360" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656701597522" />
+    <state width="1925" height="358" key="GridCell.Tab.0.right/0.0.2560.1400/2560.0.2560.1400@0.0.2560.1400" timestamp="1656719979242" />
     <state x="151" y="345" key="SettingsEditor" timestamp="1656635683467">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

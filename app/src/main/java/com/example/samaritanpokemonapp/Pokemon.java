@@ -1,14 +1,15 @@
 package com.example.samaritanpokemonapp;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Pokemon {
+public class Pokemon implements Serializable {
 
     public Pokemon(){
 
     }
 
-    public Pokemon(String picture, String name, int pokedexNumber, List<TypeOfPokemon> type, int weight, double height, int HP, int attack, int defence, int specialAttack, int specialDefense, int speed) {
+    public Pokemon(String picture, String name, int pokedexNumber, List<TypeOfPokemon> type, int weight, double height, int HP, int attack, int defence, int specialAttack, int specialDefense, int speed, String backgroundColor) {
         this.picture = picture;
         this.name = name;
         this.pokedexNumber = pokedexNumber;
@@ -21,6 +22,7 @@ public class Pokemon {
         this.specialAttack = specialAttack;
         this.specialDefense = specialDefense;
         this.speed = speed;
+        this.backgroundColor = backgroundColor;
     }
 
     private String picture;
@@ -35,6 +37,7 @@ public class Pokemon {
     private int specialAttack;
     private int specialDefense;
     private int speed;
+    private String backgroundColor;
 
     public String getPicture() {
         return picture;
@@ -130,5 +133,13 @@ public class Pokemon {
 
     public void setSpeed(int speed) {
         this.speed = speed;
+    }
+
+    public String getBackgroundColor() {
+        return backgroundColor;
+    }
+
+    public void setBackgroundColor(String backgroundColor) {
+        this.backgroundColor = backgroundColor;
     }
 }
