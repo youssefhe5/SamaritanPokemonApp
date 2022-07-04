@@ -19,7 +19,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Name and Number"
         android:textColor="@color/white"
         android:textSize="30dp"
         android:textStyle="bold" />
@@ -39,7 +38,7 @@
                 android:id="@+id/textViewAbout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="About"
+                android:text="@string/about"
                 android:textSize="16dp"
                 android:padding="2dp"
                 android:layout_marginLeft="10dp"
@@ -54,7 +53,7 @@
                 android:layout_gravity="left"
                 android:padding="2dp"
                 android:layout_marginLeft="10dp"
-                android:text="Type(s):"
+                android:text="@string/types"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -64,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:padding="2dp"
-                android:text="Weight:"
+                android:text="@string/weight"
                 android:textColor="@color/black"
                 android:layout_marginLeft="10dp"
                 android:textSize="14sp" />
@@ -75,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:padding="2dp"
-                android:text="Height:"
+                android:text="@string/height"
                 android:textColor="@color/black"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="15dp"
@@ -101,7 +100,7 @@
                 android:id="@+id/textViewBaseStats"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Base Stats"
+                android:text="@string/base_stats"
                 android:textSize="16dp"
                 android:padding="2dp"
                 android:layout_marginLeft="10dp"
@@ -116,7 +115,7 @@
                 android:layout_gravity="left"
                 android:padding="2dp"
                 android:layout_marginLeft="10dp"
-                android:text="HP:"
+                android:text="@string/hp"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -126,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:padding="2dp"
-                android:text="Attack:"
+                android:text="@string/attack"
                 android:textColor="@color/black"
                 android:layout_marginLeft="10dp"
                 android:textSize="14sp" />
@@ -137,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:padding="2dp"
-                android:text="Defence:"
+                android:text="@string/defence"
                 android:textColor="@color/black"
                 android:layout_marginLeft="10dp"
                 android:textSize="14sp" />
@@ -148,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:padding="2dp"
-                android:text="Special Attack:"
+                android:text="@string/special_attack"
                 android:textColor="@color/black"
                 android:layout_marginLeft="10dp"
                 android:textSize="14sp" />
@@ -159,7 +158,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:padding="2dp"
-                android:text="Special Defence:"
+                android:text="@string/special_defense"
                 android:textColor="@color/black"
                 android:layout_marginLeft="10dp"
                 android:textSize="14sp" />
@@ -170,7 +169,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:padding="2dp"
-                android:text="Speed:"
+                android:text="@string/speed"
                 android:textColor="@color/black"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="15dp"
@@ -198,7 +197,7 @@
                 android:id="@+id/textViewCaptureInformation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Capture Information"
+                android:text="@string/capture_information"
                 android:textSize="16dp"
                 android:padding="2dp"
                 android:layout_marginLeft="10dp"
@@ -213,7 +212,7 @@
                 android:layout_gravity="left"
                 android:padding="2dp"
                 android:layout_marginLeft="10dp"
-                android:text="Nickname:"
+                android:text="@string/nickname"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
@@ -223,7 +222,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:padding="2dp"
-                android:text="Captured on:"
+                android:text="@string/captured_on"
                 android:textColor="@color/black"
                 android:layout_marginLeft="10dp"
                 android:textSize="14sp" />
@@ -234,7 +233,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:padding="2dp"
-                android:text="Captured Level:"
+                android:text="@string/captured_level"
                 android:textColor="@color/black"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="15dp"
@@ -250,7 +249,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rect_rounded_button"
-        android:text="Capture"
+        android:text="@string/capture"
         android:textColor="@color/white"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="10dp"

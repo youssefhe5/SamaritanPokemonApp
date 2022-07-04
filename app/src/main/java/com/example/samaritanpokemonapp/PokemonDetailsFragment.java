@@ -1,14 +1,11 @@
 package com.example.samaritanpokemonapp;
 
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
-import androidx.room.Room;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,16 +22,10 @@ import com.bumptech.glide.Glide;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PokemonDetailsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class PokemonDetailsFragment extends Fragment {
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -127,7 +118,13 @@ public class PokemonDetailsFragment extends Fragment {
                 .placeholder(R.drawable.ic_launcher_foreground)
                 .into(imageViewPokemonDetailsPic);
 
-        textViewPokemonDetailsNumberAndName.setText("#" + pokemon.getPokedexNumber() + " " + HomePageFragment.startWithUppercase(pokemon.getName()));
+        if (pokemon.getPokedexNumber() < 10){
+            textViewPokemonDetailsNumberAndName.setText("#00" + pokemon.getPokedexNumber() + " " + HomePageFragment.startWithUppercase(pokemon.getName()));
+        } else if (pokemon.getPokedexNumber() < 100){
+            textViewPokemonDetailsNumberAndName.setText("#0" + pokemon.getPokedexNumber() + " " + HomePageFragment.startWithUppercase(pokemon.getName()));
+        } else {
+            textViewPokemonDetailsNumberAndName.setText("#" + pokemon.getPokedexNumber() + " " + HomePageFragment.startWithUppercase(pokemon.getName()));
+        }
 
         if (pokemon.getType().size() > 1){
             textViewPokemonDetailsTypes.setText("Type(s): " + HomePageFragment.startWithUppercase(pokemon.getType().get(0).type.getName()) + " · " + HomePageFragment.startWithUppercase(pokemon.getType().get(1).type.getName()));
@@ -135,14 +132,14 @@ public class PokemonDetailsFragment extends Fragment {
             textViewPokemonDetailsTypes.setText("Type(s): " + HomePageFragment.startWithUppercase(pokemon.getType().get(0).type.getName()));
         }
 
-        textViewPokemonDetailsWeight.setText("Weight: " + pokemon.getWeight() + " kg");
-        textViewPokemonDetailsHeight.setText("Height: " + pokemon.getHeight() + " m");
-        textViewPokemonDetailsHP.setText("HP: " + pokemon.getHP());
-        textViewPokemonDetailsAttack.setText("Attack: " + pokemon.getAttack());
-        textViewPokemonDetailsDefence.setText("Defence: " + pokemon.getDefence());
-        textViewPokemonDetailsSpecialAttack.setText("Special Attack: " + pokemon.getSpecialAttack() );
-        textViewPokemonDetailsSpecialDefense.setText("Special Defense: " + pokemon.getSpecialDefense());
-        textViewPokemonDetailsSpeed.setText("Speed: " + pokemon.getSpeed());
+        textViewPokemonDetailsWeight.setText(getResources().getString(R.string.weight) + " " + pokemon.getWeight() + " kg");
+        textViewPokemonDetailsHeight.setText(getResources().getString(R.string.height) + " " + pokemon.getHeight() + " m");
+        textViewPokemonDetailsHP.setText(getResources().getString(R.string.hp) + " " + pokemon.getHP());
+        textViewPokemonDetailsAttack.setText(getResources().getString(R.string.attack) + " " + pokemon.getAttack());
+        textViewPokemonDetailsDefence.setText(getResources().getString(R.string.defence) + " " + pokemon.getDefence());
+        textViewPokemonDetailsSpecialAttack.setText(getResources().getString(R.string.special_attack) + " " + pokemon.getSpecialAttack() );
+        textViewPokemonDetailsSpecialDefense.setText(getResources().getString(R.string.special_defense) + " " + pokemon.getSpecialDefense());
+        textViewPokemonDetailsSpeed.setText(getResources().getString(R.string.speed) + " " + pokemon.getSpeed());
 
         checkCaptureInformation(capturedPokemonDAO);
 
@@ -159,7 +156,7 @@ public class PokemonDetailsFragment extends Fragment {
                 editTextCapturedLevel = dialogView.findViewById(R.id.editTextCapturedLevel);
 
                 buttonDialogCapture = dialogView.findViewById(R.id.buttonDialogCapture);
-                textViewDialogTitle.setText("Capturing " + HomePageFragment.startWithUppercase(pokemon.getName()));
+                textViewDialogTitle.setText(getResources().getString(R.string.capturing) + " " + HomePageFragment.startWithUppercase(pokemon.getName()));
 
                 builder.setView(dialogView);
 
@@ -171,7 +168,7 @@ public class PokemonDetailsFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         if (editTextCapturedDate.getText().toString().isEmpty() || editTextCapturedLevel.getText().toString().isEmpty()){
-                            Toast.makeText(getActivity(), "Fill in both Captured Date and Captured Level", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), getResources().getString(R.string.toast_error_message), Toast.LENGTH_SHORT).show();
                         } else {
                             CapturedPokemon capturedPokemon = new CapturedPokemon(pokemon.getName(), editTextNickname.getText().toString(), editTextCapturedDate.getText().toString(), editTextCapturedLevel.getText().toString(), pokemon.getPicture(), pokemon.getBackgroundColor());
                             ExecutorService service = Executors.newSingleThreadExecutor();
@@ -206,19 +203,17 @@ public class PokemonDetailsFragment extends Fragment {
             @Override
             public void run() {
                 for (CapturedPokemon p : capturedPokemonDAO.getAll()){
-                    Log.d("TAG", "Captured Pokemon DAO run: " + p.nickName);
                     if (p.name.equalsIgnoreCase(pokemon.getName())){
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 cardViewCaptureInformation.setVisibility(View.VISIBLE);
-                                textViewNickname.setText("Nickname: " + p.nickName);
+                                textViewNickname.setText(getResources().getString(R.string.nickname) + " " + p.nickName);
                                 SimpleDateFormat format = new SimpleDateFormat("MMMM dd, yyyy");
-                                textViewCapturedDate.setText("Captured on: " + format.format(Date.valueOf(p.capturedDate)));
-                                textViewCapturedLevel.setText("Captured Level: " + p.capturedLevel);
+                                textViewCapturedDate.setText(getResources().getString(R.string.captured_on) + " " + format.format(Date.valueOf(p.capturedDate)));
+                                textViewCapturedLevel.setText(getResources().getString(R.string.captured_level) + " " + p.capturedLevel);
                                 buttonCapturePokemon.setVisibility(View.GONE);
                                 buttonCapturePokemon.setEnabled(false);
-                                Log.d("TAG", "run: " + p.name);
                             }
                         });
                         break;

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +12,10 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
@@ -29,7 +25,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -172,7 +167,6 @@ public class HomePageFragment extends Fragment {
                 ResponseBody responseBody = response.body();
                 String body = responseBody.string();
                 allPokemon = gson.fromJson(body, AllPokemon.class);
-                Log.d("TAG", "onResponse: " + allPokemon.next);
 
                 for (PokemonNameAndURL result : allPokemon.results) {
 
@@ -195,19 +189,10 @@ public class HomePageFragment extends Fragment {
                                     @Override
                                     public void run() {
 
-                                        Pokemon pokemon = new Pokemon();
-                                        pokemon.setName(pokemonDetails.getName());
-                                        pokemon.setPicture(pokemonDetails.sprites.other.officialArtwork.getFront_default());
-                                        pokemon.setPokedexNumber(pokemonDetails.getOrder());
-                                        pokemon.setWeight(pokemonDetails.getWeight());
-                                        pokemon.setHeight(pokemonDetails.getHeight());
-                                        pokemon.setType(pokemonDetails.types);
-                                        pokemon.setHP(pokemonDetails.stats.get(0).getBase_stat());
-                                        pokemon.setAttack(pokemonDetails.stats.get(1).getBase_stat());
-                                        pokemon.setDefence(pokemonDetails.stats.get(2).getBase_stat());
-                                        pokemon.setSpecialAttack(pokemonDetails.stats.get(3).getBase_stat());
-                                        pokemon.setSpecialDefense(pokemonDetails.stats.get(4).getBase_stat());
-                                        pokemon.setSpeed(pokemonDetails.stats.get(5).getBase_stat());
+                                        Pokemon pokemon = new Pokemon(pokemonDetails.sprites.other.officialArtwork.getFront_default(),
+                                                pokemonDetails.getName(), pokemonDetails.getOrder(), pokemonDetails.types, pokemonDetails.getWeight(), pokemonDetails.getHeight(),
+                                                pokemonDetails.stats.get(0).getBase_stat(), pokemonDetails.stats.get(1).getBase_stat(), pokemonDetails.stats.get(2).getBase_stat(),
+                                                pokemonDetails.stats.get(3).getBase_stat(), pokemonDetails.stats.get(4).getBase_stat(), pokemonDetails.stats.get(5).getBase_stat());
 
                                         pokemons.add(pokemon);
 
@@ -265,7 +250,7 @@ public class HomePageFragment extends Fragment {
             TextView textViewPokemonTypes = view.findViewById(R.id.textViewPokemonTypes);
             ImageView imageViewPokemonPicture = view.findViewById(R.id.imageViewPokemonPicture);
 
-            //Chooses correct colors
+            //Chooses correct background colors to display behind each pokemon
             switch (pokemon.getType().get(0).type.getName()){
                 case "rock":
                     pokemon.setBackgroundColor("#BBAA66");
@@ -347,8 +332,15 @@ public class HomePageFragment extends Fragment {
                     .placeholder(R.drawable.ic_launcher_foreground)
                     .into(imageViewPokemonPicture);
 
-            //Display text
-            textViewPokemonNumberAndName.setText("#" + pokemon.getPokedexNumber() + " " + startWithUppercase(pokemon.getName()));
+            //Display the number and name to homepage for each pokemon
+            if (pokemon.getPokedexNumber() < 10){
+                textViewPokemonNumberAndName.setText("#00" + pokemon.getPokedexNumber() + " " + startWithUppercase(pokemon.getName()));
+            } else if (pokemon.getPokedexNumber() < 100){
+                textViewPokemonNumberAndName.setText("#0" + pokemon.getPokedexNumber() + " " + startWithUppercase(pokemon.getName()));
+            } else {
+                textViewPokemonNumberAndName.setText("#" + pokemon.getPokedexNumber() + " " + startWithUppercase(pokemon.getName()));
+            }
+
             if (pokemon.getType().size() > 1){
                 textViewPokemonTypes.setText(startWithUppercase(pokemon.getType().get(0).type.getName()) + " · " + startWithUppercase(pokemon.getType().get(1).type.getName()));
             } else {

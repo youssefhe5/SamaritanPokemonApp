@@ -1,24 +1,19 @@
 package com.example.samaritanpokemonapp;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -134,8 +129,8 @@ public class CapturedPokemonFragment extends Fragment {
             imageViewCapturedPokemonPicture = view.findViewById(R.id.imageViewCapturedPokemonPicture);
 
             textViewCapturedPokemonNickname.setText(capturedPokemon.nickName);
-            textViewCapturedPokemonDate.setText("Captured on: " + format.format(Date.valueOf(capturedPokemon.capturedDate)));
-            textViewCapturedPokemonLevel.setText("Captured Level: " + capturedPokemon.capturedLevel);
+            textViewCapturedPokemonDate.setText(getResources().getString(R.string.captured_on) + " " + format.format(Date.valueOf(capturedPokemon.capturedDate)));
+            textViewCapturedPokemonLevel.setText(getResources().getString(R.string.captured_level) + " " + capturedPokemon.capturedLevel);
 
             imageViewCapturedPokemonPicture.setBackgroundColor(Color.parseColor(capturedPokemon.pokemonBackground));
 

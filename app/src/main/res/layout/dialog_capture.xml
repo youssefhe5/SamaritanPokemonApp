@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/app_name"
         android:scaleType="center"
-        android:text="Capturing"
+        android:text="@string/capturing"
         android:gravity="start"
         android:textAlignment="viewStart"
         android:layout_marginLeft="10dp"
@@ -25,7 +25,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="4dp"
-        android:hint="Nickname" />
+        android:hint="@string/nickname_hint" />
     <EditText
         android:id="@+id/editTextCapturedDate"
         android:inputType="date"
@@ -36,7 +36,7 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif"
-        android:hint="Captured Date"/>
+        android:hint="@string/captured_date_hint"/>
 
     <EditText
         android:id="@+id/editTextCapturedLevel"
@@ -48,13 +48,13 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif"
-        android:hint="Captured Level"/>
+        android:hint="@string/captured_level_hint"/>
     <Button
         android:id="@+id/buttonDialogCapture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rect_rounded_button"
-        android:text="Capture"
+        android:text="@string/capture"
         android:textColor="@color/white"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"

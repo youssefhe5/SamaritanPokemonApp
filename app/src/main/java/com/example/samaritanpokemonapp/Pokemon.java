@@ -9,7 +9,7 @@ public class Pokemon implements Serializable {
 
     }
 
-    public Pokemon(String picture, String name, int pokedexNumber, List<TypeOfPokemon> type, int weight, double height, int HP, int attack, int defence, int specialAttack, int specialDefense, int speed, String backgroundColor) {
+    public Pokemon(String picture, String name, int pokedexNumber, List<TypeOfPokemon> type, int weight, double height, int HP, int attack, int defence, int specialAttack, int specialDefense, int speed) {
         this.picture = picture;
         this.name = name;
         this.pokedexNumber = pokedexNumber;
@@ -22,7 +22,6 @@ public class Pokemon implements Serializable {
         this.specialAttack = specialAttack;
         this.specialDefense = specialDefense;
         this.speed = speed;
-        this.backgroundColor = backgroundColor;
     }
 
     private String picture;
