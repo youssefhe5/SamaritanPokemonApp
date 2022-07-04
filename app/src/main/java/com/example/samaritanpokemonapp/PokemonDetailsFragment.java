@@ -39,18 +39,21 @@ public class PokemonDetailsFragment extends Fragment {
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String POKEMON = "POKEMON";
+    private static final String CAPTURED_POKEMON_DAO = "CAPTURED_POKEMON_DAO";
 
     private Pokemon pokemon;
+    private CapturedPokemonDAO capturedPokemonDAO;
 
     public PokemonDetailsFragment() {
         // Required empty public constructor
     }
 
 
-    public static PokemonDetailsFragment newInstance(Pokemon pokemon) {
+    public static PokemonDetailsFragment newInstance(Pokemon pokemon, CapturedPokemonDAO capturedPokemonDAO) {
         PokemonDetailsFragment fragment = new PokemonDetailsFragment();
         Bundle args = new Bundle();
         args.putSerializable(POKEMON, pokemon);
+        args.putSerializable(CAPTURED_POKEMON_DAO, capturedPokemonDAO);
         fragment.setArguments(args);
         return fragment;
     }
@@ -60,6 +63,7 @@ public class PokemonDetailsFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             pokemon = (Pokemon) getArguments().getSerializable(POKEMON);
+            capturedPokemonDAO = (CapturedPokemonDAO) getArguments().getSerializable(CAPTURED_POKEMON_DAO);
         }
     }
 
@@ -140,33 +144,8 @@ public class PokemonDetailsFragment extends Fragment {
         textViewPokemonDetailsSpecialDefense.setText("Special Defense: " + pokemon.getSpecialDefense());
         textViewPokemonDetailsSpeed.setText("Speed: " + pokemon.getSpeed());
 
-        AppDatabase db = Room.databaseBuilder(getActivity(), AppDatabase.class, "captured-pokemon-database").build();
-        CapturedPokemonDAO capturedPokemonDAO = db.capturedPokemonDAO();
-        ExecutorService service = Executors.newSingleThreadExecutor();
-        service.execute(new Runnable() {
-            @Override
-            public void run() {
-                for (CapturedPokemon p : capturedPokemonDAO.getAll()){
-                    if (p.name.equals(pokemon.getName())){
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                cardViewCaptureInformation.setVisibility(View.VISIBLE);
-                                textViewNickname.setText("Nickname: " + p.nickName);
-                                SimpleDateFormat format = new SimpleDateFormat("MMMM dd, yyyy");
-                                textViewCapturedDate.setText("Captured on: " + format.format(Date.valueOf(p.capturedDate)));
-                                textViewCapturedLevel.setText("Captured Level: " + p.capturedLevel);
-                                buttonCapturePokemon.setVisibility(View.GONE);
-                                buttonCapturePokemon.setEnabled(false);
-                            }
-                        });
-                        break;
-                    }
-                }
-            }
-        });
+        checkCaptureInformation(capturedPokemonDAO);
 
-        service.shutdown();
 
         buttonCapturePokemon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -188,22 +167,19 @@ public class PokemonDetailsFragment extends Fragment {
                 DatePicker datePicker = new DatePicker(getActivity());
                 editTextCapturedDate.setText(datePicker.getYear() + "-" + datePicker.getMonth() + "-" + datePicker.getDayOfMonth());
 
-                AppDatabase db = Room.databaseBuilder(getActivity(), AppDatabase.class, "captured-pokemon-database").build();
-                CapturedPokemon capturedPokemon = new CapturedPokemon(pokemon.getName(), editTextNickname.getText().toString(), editTextCapturedDate.getText().toString(), editTextCapturedLevel.getText().toString(), pokemon.getPicture());
-                CapturedPokemonDAO capturedPokemonDAO = db.capturedPokemonDAO();
-
                 buttonDialogCapture.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         if (editTextCapturedDate.getText().toString().isEmpty() || editTextCapturedLevel.getText().toString().isEmpty()){
                             Toast.makeText(getActivity(), "Fill in both Captured Date and Captured Level", Toast.LENGTH_SHORT).show();
                         } else {
-                            //TODO: Save pokemon locally
+                            CapturedPokemon capturedPokemon = new CapturedPokemon(pokemon.getName(), editTextNickname.getText().toString(), editTextCapturedDate.getText().toString(), editTextCapturedLevel.getText().toString(), pokemon.getPicture(), pokemon.getBackgroundColor());
                             ExecutorService service = Executors.newSingleThreadExecutor();
                             service.execute(new Runnable() {
                                 @Override
                                 public void run() {
                                     capturedPokemonDAO.insert(capturedPokemon);
+                                    checkCaptureInformation(capturedPokemonDAO);
                                 }
                             });
                             service.shutdown();
@@ -222,5 +198,35 @@ public class PokemonDetailsFragment extends Fragment {
 
 
         return view;
+    }
+
+    void checkCaptureInformation(CapturedPokemonDAO capturedPokemonDAO){
+        ExecutorService service = Executors.newSingleThreadExecutor();
+        service.execute(new Runnable() {
+            @Override
+            public void run() {
+                for (CapturedPokemon p : capturedPokemonDAO.getAll()){
+                    Log.d("TAG", "Captured Pokemon DAO run: " + p.nickName);
+                    if (p.name.equalsIgnoreCase(pokemon.getName())){
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                cardViewCaptureInformation.setVisibility(View.VISIBLE);
+                                textViewNickname.setText("Nickname: " + p.nickName);
+                                SimpleDateFormat format = new SimpleDateFormat("MMMM dd, yyyy");
+                                textViewCapturedDate.setText("Captured on: " + format.format(Date.valueOf(p.capturedDate)));
+                                textViewCapturedLevel.setText("Captured Level: " + p.capturedLevel);
+                                buttonCapturePokemon.setVisibility(View.GONE);
+                                buttonCapturePokemon.setEnabled(false);
+                                Log.d("TAG", "run: " + p.name);
+                            }
+                        });
+                        break;
+                    }
+                }
+            }
+        });
+
+        service.shutdown();
     }
 }

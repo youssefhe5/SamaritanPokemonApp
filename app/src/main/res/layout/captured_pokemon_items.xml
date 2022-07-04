@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    app:cardBackgroundColor="@color/white">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <ImageView
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:id="@+id/imageViewCapturedPokemonPicture"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"/>
+
+        <TextView
+            android:id="@+id/textViewCapturedPokemonNickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Nickname"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/imageViewCapturedPokemonPicture"
+            />
+
+        <TextView
+            android:id="@+id/textViewCapturedPokemonDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:layout_marginLeft="10dp"
+            android:text="Captured on: "
+            android:textSize="14sp"
+            android:layout_toRightOf="@+id/imageViewCapturedPokemonPicture"
+            android:layout_below="@+id/textViewCapturedPokemonNickname"
+            />
+
+        <TextView
+            android:id="@+id/textViewCapturedPokemonLevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:padding="2dp"
+            android:layout_marginLeft="10dp"
+            android:text="Captured Level: "
+            android:textSize="14sp"
+            android:layout_toRightOf="@+id/imageViewCapturedPokemonPicture"
+            android:layout_below="@+id/textViewCapturedPokemonDate"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,32 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomePageFragment"
+    android:background="#FAFAFA"
     android:orientation="vertical"
-    android:background="#FAFAFA">
+    tools:context=".HomePageFragment">
 
     <ImageView
         android:id="@+id/imageViewPokedexLogo"
         android:layout_width="200dp"
         android:layout_height="75dp"
         android:layout_marginTop="25dp"
-        android:layout_gravity="center"
-        android:src="@drawable/pokeedex_logo" />
+        android:src="@drawable/pokeedex_logo"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"/>
 
     <GridView
         android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="30dp"
+        android:background="#FAFAFA"
         android:horizontalSpacing="0dp"
         android:numColumns="2"
         android:verticalSpacing="16dp"
-        android:background="#FAFAFA">
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/imageViewPokedexLogo"></GridView>
 
+    <ImageView
+        android:id="@+id/imageViewPokeBall"
+        android:layout_width="75dp"
+        android:layout_height="100dp"
+        android:src="@drawable/pokeball"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="25dp"/>
 
-    </GridView>
-
-</LinearLayout>
+</RelativeLayout>

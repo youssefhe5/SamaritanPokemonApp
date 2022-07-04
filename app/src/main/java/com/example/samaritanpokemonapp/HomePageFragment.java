@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -43,7 +44,11 @@ import okhttp3.ResponseBody;
 
 public class HomePageFragment extends Fragment {
 
+    private final static String DB = "db";
+
     private final OkHttpClient client = new OkHttpClient();
+
+    private AppDatabase db;
 
     GridView gridView;
 
@@ -63,11 +68,22 @@ public class HomePageFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static HomePageFragment newInstance(AppDatabase db) {
+        HomePageFragment fragment = new HomePageFragment();
+        Bundle args = new Bundle();
+        args.putSerializable(DB, db);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = (AppDatabase) getArguments().getSerializable(DB);
         request(request);
     }
+
+    ImageView imageViewPokeBall;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -75,17 +91,26 @@ public class HomePageFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home_page, container, false);
 
+        imageViewPokeBall = view.findViewById(R.id.imageViewPokeBall);
+
         gridView = view.findViewById(R.id.gridView);
 
         adapter = new HomePageGridViewAdapter(getActivity(), R.layout.row_grid_items, pokemons);
 
         gridView.setAdapter(adapter);
 
+        imageViewPokeBall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.openCapturedPokemonFragment(db.capturedPokemonDAO());
+            }
+        });
+
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Log.d("TAG", "onItemClick: " + pokemons.get(position).getName());
-                listener.pokemonSelected(pokemons.get(position));
+                CapturedPokemonDAO capturedPokemonDAO = db.capturedPokemonDAO();
+                listener.pokemonSelected(pokemons.get(position), capturedPokemonDAO);
             }
         });
 
@@ -130,7 +155,8 @@ public class HomePageFragment extends Fragment {
     HomePageListener listener;
 
     public interface HomePageListener{
-        void pokemonSelected(Pokemon pokemon);
+        void pokemonSelected(Pokemon pokemon, CapturedPokemonDAO capturedPokemonDAO);
+        void openCapturedPokemonFragment(CapturedPokemonDAO capturedPokemonDao);
     }
 
     void request(Request request){
@@ -314,7 +340,7 @@ public class HomePageFragment extends Fragment {
                     imageViewPokemonPicture.setBackgroundColor(Color.parseColor(pokemon.getBackgroundColor()));
                     break;
             }
-
+            
             //Display images from url, uses default android image if desired image cannot be displayed
             Glide.with(view)
                     .load(pokemon.getPicture())
